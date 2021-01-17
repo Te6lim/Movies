@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/moviesFragment"
+        android:title="@string/title_movies"/>
+
+    <item
+        android:id="@+id/tvShowsFragment"
+        android:title="@string/title_tv_shows"/>
+
+    <item
+        android:id="@+id/genresFragment"
+        android:title="@string/title_genres"/>
+
+    <item
+        android:id="@+id/discoverFragment"
+        android:title="@string/title_discover"/>
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:title="@string/title_settings"/>
+</menu>
