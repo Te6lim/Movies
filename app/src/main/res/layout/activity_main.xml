@@ -9,14 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/nav_header"
-            app:menu="@menu/nav_drawer"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -42,6 +34,16 @@
                 tools:ignore="FragmentTagUsage" />
 
         </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/primaryLightColor"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/nav_drawer" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 

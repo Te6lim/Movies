@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/moviesFragment"
-        android:title="@string/title_movies"/>
+    <group
+        android:checkableBehavior="single">
 
-    <item
-        android:id="@+id/tvShowsFragment"
-        android:title="@string/title_tv_shows"/>
+        <item
+            android:id="@+id/moviesFragment"
+            android:icon="@drawable/ic_nav_movies"
+            android:title="@string/title_movies"/>
 
-    <item
-        android:id="@+id/genresFragment"
-        android:title="@string/title_genres"/>
+        <item
+            android:id="@+id/tvShowsFragment"
+            android:icon="@drawable/ic_nav_tv_show"
+            android:title="@string/title_tv_shows"/>
 
-    <item
-        android:id="@+id/discoverFragment"
-        android:title="@string/title_discover"/>
+        <item
+            android:id="@+id/genresFragment"
+            android:icon="@drawable/ic_nav_genre"
+            android:title="@string/title_genres"/>
 
-    <item
-        android:id="@+id/settingsFragment"
-        android:title="@string/title_settings"/>
+        <item
+            android:id="@+id/discoverFragment"
+            android:icon="@drawable/ic_nav_discover"
+            android:title="@string/title_discover"/>
+
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@drawable/ic_nav_settings"
+            android:title="@string/title_settings"/>
+
+    </group>
 </menu>

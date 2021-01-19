@@ -1,4 +1,4 @@
-package com.andyprojects.movies.pages.latest
+package com.andyprojects.movies.genres
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-class LatestFragment: Fragment() {
+class GenresFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

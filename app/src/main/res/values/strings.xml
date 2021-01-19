@@ -7,9 +7,10 @@
     <string name="title_settings">Settings</string>
     <string name="nav_view_header">nav view header</string>
 
-    <string name="title_now_playing">Now playing</string>
+    <string name="title_now_playing">Now\nplaying</string>
     <string name="title_popular">Popular</string>
-    <string name="title_top_rated">Top rated</string>
+    <string name="title_top_rated">Top\nrated</string>
     <string name="title_latest">latest</string>
-    <string name="title_up_coming">Up coming</string>
+    <string name="title_up_coming">Up\ncoming</string>
+    <string name="search">search</string>
 </resources>

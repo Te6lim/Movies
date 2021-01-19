@@ -1,4 +1,4 @@
-package com.andyprojects.movies.pages.nowPlaying
+package com.andyprojects.movies.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-class NowPlayingFragment: Fragment() {
+class SettingsFragment(): Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

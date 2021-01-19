@@ -5,7 +5,31 @@
     android:id="@+id/movies_nav"
     app:startDestination="@id/moviesFragment">
     <fragment
+        android:id="@+id/tvShowsFragment"
+        android:name="com.andyprojects.movies.tvShows.TvShowsFragment"
+        android:label="@string/title_tv_shows"
+        tools:layout="@layout/fragent_shows_tv" />
+    <fragment
         android:id="@+id/moviesFragment"
         android:name="com.andyprojects.movies.movies.MoviesFragment"
-        android:label="fragment_movies" />
+        android:label="@string/title_movies"
+        tools:layout="@layout/fragment_movies" />
+
+    <fragment
+        android:id="@+id/genresFragment"
+        android:name="com.andyprojects.movies.genres.GenresFragment"
+        android:label="@string/title_genres"
+        tools:layout="@layout/fragment_genres" />
+    <fragment
+        android:id="@+id/discoverFragment"
+        android:name="com.andyprojects.movies.discover.DiscoverFragment"
+        android:label="@string/title_discover"
+        tools:layout="@layout/fragment_discover" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.andyprojects.movies.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+
 </navigation>
