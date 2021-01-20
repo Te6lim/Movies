@@ -4,7 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
+import com.andyprojects.movies.R
+import com.andyprojects.movies.databinding.FragmentPlayingNowBinding
 
 class NowPlayingFragment: Fragment() {
     override fun onCreateView(
@@ -12,6 +17,13 @@ class NowPlayingFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        val binding : FragmentPlayingNowBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_playing_now,
+                container, false)
+        binding.lifecycleOwner = this
+        val viewModel = ViewModelProvider(this)
+            .get(NowPlayingViewModel::class.java)
+        binding.nowPlayingViewModel = viewModel
+        return binding.root
     }
 }

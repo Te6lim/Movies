@@ -15,6 +15,7 @@ import com.andyprojects.movies.movies.pagedFragments.nowPlaying.NowPlayingFragme
 import com.andyprojects.movies.movies.pagedFragments.popular.PopularFragment
 import com.andyprojects.movies.movies.pagedFragments.topRated.TopRatedFragment
 import com.andyprojects.movies.movies.pagedFragments.upComing.UpComingFragment
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MoviesFragment: Fragment() {
@@ -36,6 +37,7 @@ class MoviesFragment: Fragment() {
         moviesPager = binding.moviesPager
         moviesPager.adapter = fragmentAdapter
         val tabLayout = binding.moviesTabLayout
+        tabLayout.tabGravity = TabLayout.GRAVITY_FILL
         TabLayoutMediator(tabLayout, moviesPager) { tab, position ->
             tab.text = when(position) {
                 0 -> resources.getString(R.string.title_now_playing)
