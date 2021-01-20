@@ -6,7 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-class UpComingFragment: Fragment() {
+class UpComingFragment private constructor(): Fragment() {
+    companion object {
+        private var fragment: UpComingFragment? = null
+        fun newInstance(): UpComingFragment {
+            if(fragment == null) {
+                fragment = UpComingFragment()
+            }
+            return fragment as UpComingFragment
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -6,7 +6,7 @@
 
     <data>
         <variable
-            name="nowPlayingViewModel"
+            name="viewModel"
             type="com.andyprojects.movies.movies.pagedFragments.nowPlaying.NowPlayingViewModel" />
     </data>
 
@@ -28,7 +28,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:response="@{nowPlayingViewModel.response}"/>
+                app:response="@{viewModel.response}"/>
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
