@@ -1,4 +1,4 @@
-package com.andyprojects.movies.movies.pagedFragments.nowPlaying
+package com.andyprojects.movies.movies
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter

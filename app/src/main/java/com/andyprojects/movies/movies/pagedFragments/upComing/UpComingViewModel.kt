@@ -7,13 +7,11 @@ import com.andyprojects.movies.network.MoviesNetwork
 import kotlinx.coroutines.launch
 
 class UpComingViewModel: MoviesViewModel() {
-    val response: LiveData<String>
-        get() =_response
-
+    val result = super.response
     init {
-        getResponse()
+        if(response.value == null)
+            this.getResponse()
     }
-
     override fun getResponse() {
         coroutineScope.launch {
             val responseDiffered = MoviesNetwork.retrofitService

@@ -1,19 +1,16 @@
 package com.andyprojects.movies.movies.pagedFragments.latest
 
-import androidx.lifecycle.LiveData
 import com.andyprojects.movies.BuildConfig
 import com.andyprojects.movies.movies.MoviesViewModel
 import com.andyprojects.movies.network.MoviesNetwork
 import kotlinx.coroutines.launch
 
 class LatestViewModel: MoviesViewModel() {
-    val response: LiveData<String>
-        get() =_response
-
+    val result = super.response
     init {
-        getResponse()
+        if(response.value == null)
+            this.getResponse()
     }
-
     override fun getResponse() {
         coroutineScope.launch {
             val responseDiffered = MoviesNetwork.retrofitService

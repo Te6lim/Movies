@@ -17,12 +17,12 @@ class PopularFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding: FragmentPopularBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_playing_now,
+            DataBindingUtil.inflate(inflater, R.layout.fragment_popular,
                 container, false)
         binding.lifecycleOwner = this
-        val nowPlayingViewModel = ViewModelProvider(this)
+        val popularViewModel = ViewModelProvider(this)
             .get(PopularViewModel::class.java)
-        binding.viewModel = nowPlayingViewModel
+        binding.viewModel = popularViewModel
         return binding.root
     }
 }
