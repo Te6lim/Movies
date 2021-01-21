@@ -1,17 +1,14 @@
-package com.andyprojects.movies.movies.pagedFragments.nowPlaying
+package com.andyprojects.movies.movies.pagedFragments.latest
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.andyprojects.movies.BuildConfig
 import com.andyprojects.movies.movies.MoviesViewModel
 import com.andyprojects.movies.network.MoviesNetwork
-import kotlinx.coroutines.*
+import kotlinx.coroutines.launch
 
-class NowPlayingViewModel: MoviesViewModel() {
-
+class LatestViewModel: MoviesViewModel() {
     val response: LiveData<String>
-    get() =_response
+        get() =_response
 
     init {
         getResponse()
@@ -20,7 +17,7 @@ class NowPlayingViewModel: MoviesViewModel() {
     override fun getResponse() {
         coroutineScope.launch {
             val responseDiffered = MoviesNetwork.retrofitService
-                .getNowPlayingMoviesAsync("en", 1, BuildConfig.API_KEY)
+                .getLatestMoviesAsync("en", 1, BuildConfig.API_KEY)
             try {
                 val responseString = responseDiffered.await()
                 if(responseString.isNotEmpty())

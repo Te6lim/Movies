@@ -10,16 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentPlayingNowBinding
 
-class NowPlayingFragment private constructor(): Fragment() {
-    companion object {
-        private var fragment: NowPlayingFragment? = null
-        fun newInstance(): NowPlayingFragment {
-            if(fragment == null) {
-                fragment = NowPlayingFragment()
-            }
-            return fragment as NowPlayingFragment
-        }
-    }
+class NowPlayingFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

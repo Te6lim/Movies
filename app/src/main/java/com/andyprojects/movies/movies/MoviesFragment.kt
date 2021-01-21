@@ -56,11 +56,11 @@ class MoviesFragment: Fragment() {
 
         override fun createFragment(position: Int): Fragment {
             return when(position) {
-                0 -> NowPlayingFragment.newInstance()
-                1 -> PopularFragment.newInstance()
-                2 -> TopRatedFragment.newInstance()
-                3 -> LatestFragment.newInstance()
-                else -> UpComingFragment.newInstance()
+                0 -> NowPlayingFragment()
+                1 -> PopularFragment()
+                2 -> TopRatedFragment()
+                3 -> LatestFragment()
+                else -> UpComingFragment()
             }
         }
     }

@@ -17,7 +17,35 @@ private val retrofit = Retrofit.Builder()
 
 interface MoviesApiService {
     @GET("movie/now_playing")
-    fun getMoviesAsync(
+    fun getNowPlayingMoviesAsync(
+        @Query("language") lang: String,
+        @Query("page") page: Int,
+        @Query("api_key") key: String
+    ): Deferred<String>
+
+    @GET("movie/popular")
+    fun getPopularMoviesAsync(
+        @Query("language") lang: String,
+        @Query("page") page: Int,
+        @Query("api_key") key: String
+    ): Deferred<String>
+
+    @GET("movie/top_rated")
+    fun getTopRatedMoviesAsync(
+        @Query("language") lang: String,
+        @Query("page") page: Int,
+        @Query("api_key") key: String
+    ): Deferred<String>
+
+    @GET("movie/latest")
+    fun getLatestMoviesAsync(
+        @Query("language") lang: String,
+        @Query("page") page: Int,
+        @Query("api_key") key: String
+    ): Deferred<String>
+
+    @GET("movie/up_coming")
+    fun getUpComingMoviesAsync(
         @Query("language") lang: String,
         @Query("page") page: Int,
         @Query("api_key") key: String
