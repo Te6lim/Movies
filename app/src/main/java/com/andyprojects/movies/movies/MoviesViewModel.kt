@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-abstract class MoviesViewModel(): ViewModel() {
+abstract class MoviesViewModel: ViewModel() {
 
     protected var _response = MutableLiveData<String>()
     protected val response: LiveData<String>

@@ -9,7 +9,7 @@ class LatestViewModel: MoviesViewModel() {
     val result = super.response
     init {
         if(response.value == null)
-            this.getResponse()
+            getResponse()
     }
     override fun getResponse() {
         coroutineScope.launch {
@@ -17,7 +17,7 @@ class LatestViewModel: MoviesViewModel() {
                 .getLatestMoviesAsync("en", 1, BuildConfig.API_KEY)
             try {
                 val responseString = responseDiffered.await()
-                if(responseString.isNotEmpty())
+                if(responseString.isEmpty())
                     _response.value = responseString
             } catch(t: Throwable) {
                 _response.value = t.message

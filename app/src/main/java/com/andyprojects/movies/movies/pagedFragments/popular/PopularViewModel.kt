@@ -9,7 +9,7 @@ class PopularViewModel: MoviesViewModel() {
     val result = super.response
     init {
         if(response.value == null)
-            this.getResponse()
+            getResponse()
     }
     override fun getResponse() {
         coroutineScope.launch {

@@ -1,5 +1,6 @@
 package com.andyprojects.movies.network
 
+import com.andyprojects.movies.configuration.Configuration
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
@@ -44,12 +45,16 @@ interface MoviesApiService {
         @Query("api_key") key: String
     ): Deferred<String>
 
-    @GET("movie/up_coming")
+    @GET("movie/upcoming")
     fun getUpComingMoviesAsync(
         @Query("language") lang: String,
         @Query("page") page: Int,
         @Query("api_key") key: String
     ): Deferred<String>
+
+    @GET("configuration")
+    fun getConfig(
+    ): Deferred<Configuration>
 }
 
 object MoviesNetwork {

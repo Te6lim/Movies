@@ -1,6 +1,5 @@
 package com.andyprojects.movies.movies.pagedFragments.upComing
 
-import androidx.lifecycle.LiveData
 import com.andyprojects.movies.BuildConfig
 import com.andyprojects.movies.movies.MoviesViewModel
 import com.andyprojects.movies.network.MoviesNetwork
@@ -10,7 +9,7 @@ class UpComingViewModel: MoviesViewModel() {
     val result = super.response
     init {
         if(response.value == null)
-            this.getResponse()
+            getResponse()
     }
     override fun getResponse() {
         coroutineScope.launch {
