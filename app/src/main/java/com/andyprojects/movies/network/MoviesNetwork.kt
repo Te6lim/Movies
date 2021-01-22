@@ -1,6 +1,5 @@
 package com.andyprojects.movies.network
 
-import com.andyprojects.movies.configuration.Configuration
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
@@ -53,8 +52,8 @@ interface MoviesApiService {
     ): Deferred<String>
 
     @GET("configuration")
-    fun getConfig(
-    ): Deferred<Configuration>
+    fun getConfigAsync(
+    ): Deferred<NetworkModelConfig>
 }
 
 object MoviesNetwork {

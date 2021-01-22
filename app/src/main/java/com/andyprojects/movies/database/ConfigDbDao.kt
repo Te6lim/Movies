@@ -5,13 +5,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.andyprojects.movies.configuration.Configuration
+import com.andyprojects.movies.network.NetworkModelConfig
 
 @Dao
 interface ConfigDbDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(configs: Configuration)
+    fun insertAll(configs: DbModelConfig)
 
     @Query("SELECT * from movies_config_table LIMIT 1")
-    fun getConfig(): LiveData<Configuration>
+    fun getConfig(): LiveData<NetworkModelConfig>
 }

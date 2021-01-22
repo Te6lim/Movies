@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.andyprojects.movies.databinding.ActivityMainBinding
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil
             .setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
+        val mainViewModel = ViewModelProvider(this)
+            .get(MainViewModel::class.java)
+        binding.viewModel = mainViewModel
         appToolbar = binding.appToolbar
         setSupportActionBar(appToolbar)
         val navController = this.findNavController(R.id.navHost)

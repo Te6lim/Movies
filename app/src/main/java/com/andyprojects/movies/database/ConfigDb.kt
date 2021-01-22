@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [DatabaseConfig::class], version = 1, exportSchema = false)
+@Database(entities = [DbModelConfig::class], version = 1, exportSchema = false)
 abstract class ConfigDb: RoomDatabase() {
 
     abstract val configDbDao: ConfigDbDao
@@ -13,7 +13,7 @@ abstract class ConfigDb: RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: ConfigDb? = null
-        fun getInstance(context: Context): ConfigDb {
+        fun getDatabase(context: Context): ConfigDb {
             synchronized(this) {
                 var instance = INSTANCE
                 if(instance == null) {
