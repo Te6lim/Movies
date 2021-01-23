@@ -20,9 +20,9 @@ class PopularFragment: Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_popular,
                 container, false)
         binding.lifecycleOwner = this
-        val popularViewModel = ViewModelProvider(this)
+        /*val popularViewModel = ViewModelProvider(this)
             .get(PopularViewModel::class.java)
-        binding.viewModel = popularViewModel
+        binding.viewModel = popularViewModel*/
         return binding.root
     }
 }

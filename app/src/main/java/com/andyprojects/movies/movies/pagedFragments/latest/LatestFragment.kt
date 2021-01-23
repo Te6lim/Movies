@@ -19,9 +19,9 @@ class LatestFragment: Fragment() {
         val binding: FragmentLatestBinding = DataBindingUtil.
                 inflate(inflater, R.layout.fragment_latest, container, false)
         binding.lifecycleOwner = this
-        val latestViewModel = ViewModelProvider(this)
+        /*val latestViewModel = ViewModelProvider(this)
             .get(LatestViewModel::class.java)
-        binding.viewModel = latestViewModel
+        binding.viewModel = latestViewModel*/
         return binding.root
     }
 }

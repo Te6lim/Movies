@@ -20,9 +20,9 @@ class UpComingFragment: Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_coming_up,
                 container, false)
         binding.lifecycleOwner = this
-        val upComingViewModel = ViewModelProvider(this)
+        /*val upComingViewModel = ViewModelProvider(this)
             .get(UpComingViewModel::class.java)
-        binding.viewModel = upComingViewModel
+        binding.viewModel = upComingViewModel*/
         return binding.root
     }
 }

@@ -20,9 +20,9 @@ class TopRatedFragment: Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_rated_top,
                 container, false)
         binding.lifecycleOwner = this
-        val topRatedViewModel = ViewModelProvider(this)
+        /*val topRatedViewModel = ViewModelProvider(this)
             .get(TopRatedViewModel::class.java)
-        binding.viewModel = topRatedViewModel
+        binding.viewModel = topRatedViewModel*/
         return binding.root
     }
 }

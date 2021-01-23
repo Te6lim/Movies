@@ -2,8 +2,10 @@ package com.andyprojects.movies.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
+import com.andyprojects.movies.BuildConfig
 import com.andyprojects.movies.network.asDatabaseModel
 import com.andyprojects.movies.database.ConfigDb
+import com.andyprojects.movies.database.asDomainModel
 import com.andyprojects.movies.domain.Config
 import com.andyprojects.movies.network.MoviesNetwork
 import com.andyprojects.movies.network.asDomainModel
@@ -18,9 +20,13 @@ class ConfigRepository (private val db: ConfigDb) {
     }
 
     suspend fun refreshConfig() {
+        val configDiffered = MoviesNetwork.retrofitService
+            .getConfigAsync(BuildConfig.API_KEY)
         withContext(Dispatchers.IO) {
-            val config = MoviesNetwork.retrofitService.getConfigAsync().await()
-            db.configDbDao.insertAll(config.asDatabaseModel())
+            try {
+                val config = configDiffered.await()
+                db.configDbDao.insertAll(config.asDatabaseModel())
+            } catch(t: Throwable) { }
         }
     }
 }

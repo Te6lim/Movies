@@ -2,13 +2,18 @@ package com.andyprojects.movies.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.andyprojects.movies.converters.DataConverter
 import com.andyprojects.movies.network.NetworkModelConfig
 import com.andyprojects.movies.domain.Config
 
 @Entity(tableName = "movies_config_table")
+@TypeConverters(DataConverter::class)
 class DbModelConfig(
+    @PrimaryKey
     @ColumnInfo(name="images")
-    var images: NetworkModelConfig.Images?,
+    var imagesConfig: NetworkModelConfig.ImagesConfig,
 
     @ColumnInfo(name="logo_sizes")
     var logo_sizes: List<String?>?,
@@ -28,7 +33,7 @@ class DbModelConfig(
 
 fun DbModelConfig.asDomainModel(): Config {
     return Config(
-        images = this.images,
+        imagesConfig = this.imagesConfig,
         logo_sizes = this.logo_sizes,
         poster_sizes = this.poster_sizes,
         profile_sizes = this.profile_sizes,

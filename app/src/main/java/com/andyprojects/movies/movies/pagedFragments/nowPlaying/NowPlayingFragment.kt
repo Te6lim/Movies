@@ -20,9 +20,9 @@ class NowPlayingFragment: Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_playing_now,
                 container, false)
         binding.lifecycleOwner = this
-        val nowPlayingViewModel = ViewModelProvider(this)
+        /*val nowPlayingViewModel = ViewModelProvider(this)
             .get(NowPlayingViewModel::class.java)
-        binding.viewModel = nowPlayingViewModel
+        binding.viewModel = nowPlayingViewModel*/
         return binding.root
     }
 }

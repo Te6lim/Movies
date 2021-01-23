@@ -6,7 +6,7 @@ import com.andyprojects.movies.movies.MoviesViewModel
 import com.andyprojects.movies.network.MoviesNetwork
 import kotlinx.coroutines.launch
 
-class TopRatedViewModel: MoviesViewModel() {
+/*class TopRatedViewModel: MoviesViewModel() {
     val result = super.response
     init {
         if(response.value == null)
@@ -25,4 +25,4 @@ class TopRatedViewModel: MoviesViewModel() {
             }
         }
     }
-}
+}*/

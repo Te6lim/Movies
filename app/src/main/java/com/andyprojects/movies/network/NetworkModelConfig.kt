@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class NetworkModelConfig(
-    val images: Images?,
+    val imagesConfig: ImagesConfig,
     val logo_sizes: List<String?>?,
     val poster_sizes: List<String?>?,
     val profile_sizes: List<String?>?,
@@ -16,7 +16,7 @@ data class NetworkModelConfig(
 ): Parcelable {
 
     @Parcelize
-    data class Images(
+    data class ImagesConfig(
         val base_url: String?,
         val secure_base_url: String?,
         val backdrop_sizes: List<String?>?
@@ -25,7 +25,7 @@ data class NetworkModelConfig(
 
 fun NetworkModelConfig.asDatabaseModel(): DbModelConfig {
     return DbModelConfig(
-        images = this.images,
+        imagesConfig = this.imagesConfig,
         logo_sizes = this.logo_sizes,
         poster_sizes = this.poster_sizes,
         profile_sizes = this.profile_sizes,
@@ -36,7 +36,7 @@ fun NetworkModelConfig.asDatabaseModel(): DbModelConfig {
 
 fun NetworkModelConfig.asDomainModel(): Config {
     return Config(
-        images = this.images,
+        imagesConfig = this.imagesConfig,
         logo_sizes = this.logo_sizes,
         poster_sizes = this.poster_sizes,
         profile_sizes = this.profile_sizes,

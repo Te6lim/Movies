@@ -21,7 +21,9 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil
             .setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
-        val mainViewModel = ViewModelProvider(this)
+        val app = this.application
+        val viewModelFactory = MainViewModel.MainViewModelFactory(app)
+        val mainViewModel = ViewModelProvider(this, viewModelFactory)
             .get(MainViewModel::class.java)
         binding.viewModel = mainViewModel
         appToolbar = binding.appToolbar
