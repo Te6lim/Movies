@@ -13,4 +13,5 @@
     <string name="title_latest">latest</string>
     <string name="title_up_coming">Up\ncoming</string>
     <string name="search">search</string>
+    <string name="movie_poster">movie poster</string>
 </resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/movie_item_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/small_spacing"
+        android:background="@color/primaryLightColor"
+        android:elevation="@dimen/small_elevation"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/movie_poster"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/movie_poster"
+            app:layout_constraintBottom_toTopOf="@+id/movie_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:text="@string/title_movies"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

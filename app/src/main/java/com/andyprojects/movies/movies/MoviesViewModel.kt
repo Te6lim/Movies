@@ -9,9 +9,9 @@ import kotlinx.coroutines.Job
 
 abstract class MoviesViewModel: ViewModel() {
 
-    protected var _response = MutableLiveData<String>()
-    protected val response: LiveData<String>
-        get() = _response
+    protected var mutableResponse = MutableLiveData<List<Movie?>?>()
+    val response: LiveData<List<Movie?>?>
+        get() = mutableResponse
 
     private val viewModelJob = Job()
     protected val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)

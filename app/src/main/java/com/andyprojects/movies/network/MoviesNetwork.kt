@@ -1,5 +1,6 @@
 package com.andyprojects.movies.network
 
+import com.andyprojects.movies.movies.Movies
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -23,14 +24,14 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface MoviesApiService {
-    /*@GET("movie/now_playing")
+    @GET("movie/now_playing")
     fun getNowPlayingMoviesAsync(
         @Query("language") lang: String,
         @Query("page") page: Int,
         @Query("api_key") key: String
-    ): Deferred<String>
+    ): Deferred<Movies>
 
-    @GET("movie/popular")
+    /*@GET("movie/popular")
     fun getPopularMoviesAsync(
         @Query("language") lang: String,
         @Query("page") page: Int,

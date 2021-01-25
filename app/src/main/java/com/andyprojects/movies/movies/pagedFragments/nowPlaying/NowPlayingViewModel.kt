@@ -4,8 +4,7 @@ import com.andyprojects.movies.movies.MoviesViewModel
 import com.andyprojects.movies.network.MoviesNetwork
 import kotlinx.coroutines.*
 
-/*class NowPlayingViewModel: MoviesViewModel() {
-    val result = super.response
+class NowPlayingViewModel: MoviesViewModel() {
     init {
         if(response.value == null)
             getResponse()
@@ -15,12 +14,10 @@ import kotlinx.coroutines.*
             val responseDiffered = MoviesNetwork.retrofitService
                 .getNowPlayingMoviesAsync("en", 1, BuildConfig.API_KEY)
             try {
-                val responseString = responseDiffered.await()
-                if(responseString.isNotEmpty())
-                    _response.value = responseString
-            } catch(t: Throwable) {
-                _response.value = t.message
-            }
+                val response = responseDiffered.await()
+                if(response.results != null)
+                    mutableResponse.value = response.results
+            } catch(t: Throwable) {}
         }
     }
-}*/
+}
