@@ -5,6 +5,7 @@ import com.andyprojects.movies.network.MoviesNetwork
 import kotlinx.coroutines.*
 
 class NowPlayingViewModel: MoviesViewModel() {
+
     init {
         if(response.value == null)
             getResponse()

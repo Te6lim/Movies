@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class NetworkModelConfig(
-    val imagesConfig: ImagesConfig,
+    val imagesConfig: ImagesConfig?,
     val logo_sizes: List<String?>?,
     val poster_sizes: List<String?>?,
     val profile_sizes: List<String?>?,

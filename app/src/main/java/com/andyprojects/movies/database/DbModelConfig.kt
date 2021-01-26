@@ -11,9 +11,11 @@ import com.andyprojects.movies.domain.Config
 @Entity(tableName = "movies_config_table")
 @TypeConverters(DataConverter::class)
 class DbModelConfig(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+
     @ColumnInfo(name="images")
-    var imagesConfig: NetworkModelConfig.ImagesConfig,
+    var imagesConfig: NetworkModelConfig.ImagesConfig?,
 
     @ColumnInfo(name="logo_sizes")
     var logo_sizes: List<String?>?,

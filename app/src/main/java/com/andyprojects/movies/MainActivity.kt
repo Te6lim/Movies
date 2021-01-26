@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -21,17 +22,21 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil
             .setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
-        val app = this.application
+
+        /**val app = this.application
         val viewModelFactory = MainViewModel.MainViewModelFactory(app)
         val mainViewModel = ViewModelProvider(this, viewModelFactory)
             .get(MainViewModel::class.java)
-        binding.viewModel = mainViewModel
+        binding.viewModel = mainViewModel**/
+
         appToolbar = binding.appToolbar
         setSupportActionBar(appToolbar)
+
         val navController = this.findNavController(R.id.navHost)
         navDrawer = binding.drawerLayout
         NavigationUI.setupActionBarWithNavController(this, navController, navDrawer)
         NavigationUI.setupWithNavController(binding.navView, navController)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

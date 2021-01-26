@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentPlayingNowBinding
 import com.andyprojects.movies.movies.MoviesAdapter
+import com.andyprojects.movies.repository.ConfigRepository
 
 class NowPlayingFragment: Fragment() {
 
@@ -25,12 +26,14 @@ class NowPlayingFragment: Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_playing_now,
                 container, false)
         binding.lifecycleOwner = this
-        val nowPlayingViewModel = ViewModelProvider(this)
-            .get(NowPlayingViewModel::class.java)
-        binding.viewModel = nowPlayingViewModel
+
         recyclerView = binding.moviesRecyclerView
         recyclerView.adapter = MoviesAdapter()
         val adapter = recyclerView.adapter as MoviesAdapter
+
+        val nowPlayingViewModel = ViewModelProvider(this)
+            .get(NowPlayingViewModel::class.java)
+        binding.viewModel = nowPlayingViewModel
 
         nowPlayingViewModel.response.observe(viewLifecycleOwner, {
             adapter.submitList(it)

@@ -13,19 +13,26 @@ import kotlin.math.floor
 class MoviesAdapter: ListAdapter<Movie, MovieViewHolder>(DiffCallBack) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val itemMovieBinding = MovieViewHolder.from(parent)
+        adaptViewDimension(itemMovieBinding, parent)
+        return MovieViewHolder(itemMovieBinding)
+    }
+
+    private fun adaptViewDimension(
+        itemMovieBinding: ItemMovieBinding,
+        parent: ViewGroup
+    ) {
         val params = itemMovieBinding.root.layoutParams
         val fullWidth = (parent.parent as ViewGroup).width
         with(params) {
-            val largeWidth = fullWidth/3
+            val largeWidth = fullWidth / 3
             width = largeWidth - floor(0.1 * largeWidth).toInt()
             height = (width * 1.6).toInt()
         }
         itemMovieBinding.root.layoutParams = params
-        return MovieViewHolder(itemMovieBinding)
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-
+        holder.bind(getItem(position))
     }
 
     companion object DiffCallBack: DiffUtil.ItemCallback<Movie>() {
@@ -45,5 +52,8 @@ class MovieViewHolder(private val movieHolder: ItemMovieBinding)
             return DataBindingUtil
                 .inflate(inflater, R.layout.item_movie, parent, false)
         }
+    }
+    fun bind(movie: Movie) {
+        movieHolder.movie = movie
     }
 }
