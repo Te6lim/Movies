@@ -3,6 +3,7 @@ package com.andyprojects.movies.movies
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,7 @@ import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.ItemMovieBinding
 import kotlin.math.floor
 
-class MoviesAdapter: ListAdapter<Movie, MovieViewHolder>(DiffCallBack) {
+class MoviesAdapter: PagedListAdapter<Movie, MovieViewHolder>(DiffCallBack) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val itemMovieBinding = MovieViewHolder.from(parent)
         adaptViewDimension(itemMovieBinding, parent)
@@ -32,7 +33,7 @@ class MoviesAdapter: ListAdapter<Movie, MovieViewHolder>(DiffCallBack) {
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        getItem(position)?.let{holder.bind(it)}
     }
 
     companion object DiffCallBack: DiffUtil.ItemCallback<Movie>() {

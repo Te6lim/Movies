@@ -1,9 +1,4 @@
-package com.andyprojects.movies.movies.pagedFragments.popular
-
-import com.andyprojects.movies.BuildConfig
-import com.andyprojects.movies.movies.MoviesViewModel
-import com.andyprojects.movies.network.MoviesNetwork
-import kotlinx.coroutines.launch
+package com.andyprojects.movies.movies.page.popular
 
 /*class PopularViewModel: MoviesViewModel() {
     val result = super.response

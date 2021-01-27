@@ -1,11 +1,6 @@
-package com.andyprojects.movies.movies.pagedFragments.upComing
+package com.andyprojects.movies.movies.page.topRated
 
-import com.andyprojects.movies.BuildConfig
-import com.andyprojects.movies.movies.MoviesViewModel
-import com.andyprojects.movies.network.MoviesNetwork
-import kotlinx.coroutines.launch
-
-/*class UpComingViewModel: MoviesViewModel() {
+/*class TopRatedViewModel: MoviesViewModel() {
     val result = super.response
     init {
         if(response.value == null)
@@ -14,7 +9,7 @@ import kotlinx.coroutines.launch
     override fun getResponse() {
         coroutineScope.launch {
             val responseDiffered = MoviesNetwork.retrofitService
-                .getUpComingMoviesAsync("en", 1, BuildConfig.API_KEY)
+                .getTopRatedMoviesAsync("en", 1, BuildConfig.API_KEY)
             try {
                 val responseString = responseDiffered.await()
                 if(responseString.isNotEmpty())

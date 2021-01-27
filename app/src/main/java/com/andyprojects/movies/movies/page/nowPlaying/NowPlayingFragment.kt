@@ -1,4 +1,4 @@
-package com.andyprojects.movies.movies.pagedFragments.nowPlaying
+package com.andyprojects.movies.movies.page.nowPlaying
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentPlayingNowBinding
 import com.andyprojects.movies.movies.MoviesAdapter
-import com.andyprojects.movies.repository.ConfigRepository
 
 class NowPlayingFragment: Fragment() {
 

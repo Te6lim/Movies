@@ -10,11 +10,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentMoviesBinding
-import com.andyprojects.movies.movies.pagedFragments.latest.LatestFragment
-import com.andyprojects.movies.movies.pagedFragments.nowPlaying.NowPlayingFragment
-import com.andyprojects.movies.movies.pagedFragments.popular.PopularFragment
-import com.andyprojects.movies.movies.pagedFragments.topRated.TopRatedFragment
-import com.andyprojects.movies.movies.pagedFragments.upComing.UpComingFragment
+import com.andyprojects.movies.movies.page.latest.LatestFragment
+import com.andyprojects.movies.movies.page.nowPlaying.NowPlayingFragment
+import com.andyprojects.movies.movies.page.popular.PopularFragment
+import com.andyprojects.movies.movies.page.topRated.TopRatedFragment
+import com.andyprojects.movies.movies.page.upComing.UpComingFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

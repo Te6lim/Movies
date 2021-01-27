@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".movies.pagedFragments.nowPlaying.NowPlayingFragment">
+    tools:context=".movies.page.nowPlaying.NowPlayingFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.andyprojects.movies.movies.pagedFragments.nowPlaying.NowPlayingViewModel" />
+            type="com.andyprojects.movies.movies.page.nowPlaying.NowPlayingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
