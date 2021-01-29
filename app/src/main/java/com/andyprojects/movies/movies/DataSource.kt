@@ -3,18 +3,16 @@ package com.andyprojects.movies.movies
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.andyprojects.movies.BuildConfig
-import com.andyprojects.movies.network.MoviesNetwork
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
-class MoviesDataSourceFactory: DataSource.Factory<Int, Movie>() {
+class MoviesDataSourceFactory(private val getMoviesAsync:(String, Int, String) -> Deferred<Movies>)
+    : DataSource.Factory<Int, Movie>() {
     override fun create(): DataSource<Int, Movie> {
-        return MoviesDataSource()
+        return MoviesDataSource(getMoviesAsync)
     }
 
-    class MoviesDataSource: PageKeyedDataSource<Int, Movie>() {
+    class MoviesDataSource(private val getMoviesAsync:(String, Int, String) -> Deferred<Movies>)
+        : PageKeyedDataSource<Int, Movie>() {
 
         companion object {
             private var KEY = 1
@@ -28,10 +26,9 @@ class MoviesDataSourceFactory: DataSource.Factory<Int, Movie>() {
             callback: LoadInitialCallback<Int, Movie>
         ) {
             coroutineScope.launch {
-                val responseDiffered = MoviesNetwork.retrofitService
-                    .getNowPlayingMoviesAsync("en", KEY, BuildConfig.API_KEY)
+                val responseDeferred = getMoviesAsync("en", KEY, BuildConfig.API_KEY)
                 try {
-                    val response = responseDiffered.await()
+                    val response = responseDeferred.await()
                     if(response.results != null)
                         callback.onResult(response.results, null, ++KEY)
                 } catch(t: Throwable) {}
@@ -40,8 +37,7 @@ class MoviesDataSourceFactory: DataSource.Factory<Int, Movie>() {
 
         override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
             coroutineScope.launch {
-                val responseDiffered = MoviesNetwork.retrofitService
-                    .getNowPlayingMoviesAsync("en", params.key, BuildConfig.API_KEY)
+                val responseDiffered = getMoviesAsync("en", params.key, BuildConfig.API_KEY)
                 try {
                     val response = responseDiffered.await()
                     val key = if(params.key > 1) params.key - 1
@@ -54,10 +50,9 @@ class MoviesDataSourceFactory: DataSource.Factory<Int, Movie>() {
 
         override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
             coroutineScope.launch {
-                val responseDiffered = MoviesNetwork.retrofitService
-                    .getNowPlayingMoviesAsync("en", params.key, BuildConfig.API_KEY)
+                val responseDeferred = getMoviesAsync("en", params.key, BuildConfig.API_KEY)
                 try {
-                    val response = responseDiffered.await()
+                    val response = responseDeferred.await()
                     val totalPages = response.total_pages ?: 0
                     val key = if(params.key < totalPages) params.key + 1
                     else null

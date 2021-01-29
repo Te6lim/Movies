@@ -7,7 +7,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -32,33 +31,33 @@ interface MoviesApiService {
         @Query("api_key") key: String
     ): Deferred<Movies>
 
-    /*@GET("movie/popular")
+    @GET("movie/popular")
     fun getPopularMoviesAsync(
         @Query("language") lang: String,
         @Query("page") page: Int,
         @Query("api_key") key: String
-    ): Deferred<String>
+    ): Deferred<Movies>
 
     @GET("movie/top_rated")
     fun getTopRatedMoviesAsync(
         @Query("language") lang: String,
         @Query("page") page: Int,
         @Query("api_key") key: String
-    ): Deferred<String>
+    ): Deferred<Movies>
 
     @GET("movie/latest")
     fun getLatestMoviesAsync(
         @Query("language") lang: String,
         @Query("page") page: Int,
         @Query("api_key") key: String
-    ): Deferred<String>
+    ): Deferred<Movies>
 
     @GET("movie/upcoming")
     fun getUpComingMoviesAsync(
         @Query("language") lang: String,
         @Query("page") page: Int,
         @Query("api_key") key: String
-    ): Deferred<String>*/
+    ): Deferred<Movies>
 
     @GET("configuration")
     fun getConfigAsync(

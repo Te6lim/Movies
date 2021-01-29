@@ -13,7 +13,6 @@
         android:id="@+id/movie_item_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/small_spacing"
         android:elevation="@dimen/small_elevation"
         android:orientation="vertical"
         tools:ignore="UseCompoundDrawables">

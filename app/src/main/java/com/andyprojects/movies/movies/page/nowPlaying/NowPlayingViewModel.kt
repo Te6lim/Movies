@@ -6,6 +6,7 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.andyprojects.movies.movies.Movie
 import com.andyprojects.movies.movies.MoviesDataSourceFactory
+import com.andyprojects.movies.network.MoviesNetwork
 
 class NowPlayingViewModel: ViewModel() {
 
@@ -16,7 +17,7 @@ class NowPlayingViewModel: ViewModel() {
             getResponse()
     }
     private fun getResponse() {
-        val moviesDataSourceFactory = MoviesDataSourceFactory()
+        val moviesDataSourceFactory = MoviesDataSourceFactory(MoviesNetwork.retrofitService::getNowPlayingMoviesAsync)
         val config = PagedList.Config.Builder()
             .setPageSize(20)
             .setEnablePlaceholders(false)
