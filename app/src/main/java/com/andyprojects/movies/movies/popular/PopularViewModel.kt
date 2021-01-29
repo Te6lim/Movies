@@ -1,4 +1,5 @@
-package com.andyprojects.movies.movies.page.nowPlaying
+package com.andyprojects.movies.movies.popular
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,8 +9,7 @@ import com.andyprojects.movies.movies.Movie
 import com.andyprojects.movies.movies.MoviesDataSourceFactory
 import com.andyprojects.movies.network.MoviesNetwork
 
-class NowPlayingViewModel: ViewModel() {
-
+class PopularViewModel: ViewModel() {
     var response: LiveData<PagedList<Movie>> = MutableLiveData()
 
     init {
@@ -17,7 +17,7 @@ class NowPlayingViewModel: ViewModel() {
             getResponse()
     }
     private fun getResponse() {
-        val moviesDataSourceFactory = MoviesDataSourceFactory(MoviesNetwork.retrofitService::getNowPlayingMoviesAsync)
+        val moviesDataSourceFactory = MoviesDataSourceFactory(MoviesNetwork.retrofitService::getPopularMoviesAsync)
         val config = PagedList.Config.Builder()
             .setPageSize(20)
             .setEnablePlaceholders(false)

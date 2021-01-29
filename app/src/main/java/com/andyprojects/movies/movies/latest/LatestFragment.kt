@@ -1,4 +1,4 @@
-package com.andyprojects.movies.movies.page.latest
+package com.andyprojects.movies.movies.latest
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.andyprojects.movies.movies.page.upComing
+package com.andyprojects.movies.movies.upComing
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentComingUpBinding
+import com.andyprojects.movies.movies.MoviesAdapter
 
 class UpComingFragment: Fragment() {
+
+    private lateinit var recyclerView: RecyclerView
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,9 +25,19 @@ class UpComingFragment: Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_coming_up,
                 container, false)
         binding.lifecycleOwner = this
-        /*val upComingViewModel = ViewModelProvider(this)
+
+        recyclerView = binding.includeRecyclerView.moviesRecyclerView
+        recyclerView.adapter = MoviesAdapter()
+        val adapter = recyclerView.adapter as MoviesAdapter
+
+        val upComingViewModel = ViewModelProvider(this)
             .get(UpComingViewModel::class.java)
-        binding.viewModel = upComingViewModel*/
+        binding.viewModel = upComingViewModel
+
+            upComingViewModel.response.observe(viewLifecycleOwner, {
+                adapter.submitList(it)
+            })
+
         return binding.root
     }
 }

@@ -1,4 +1,4 @@
-package com.andyprojects.movies.movies.page.popular
+package com.andyprojects.movies.movies.topRated
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.andyprojects.movies.movies.Movie
 import com.andyprojects.movies.movies.MoviesDataSourceFactory
 import com.andyprojects.movies.network.MoviesNetwork
 
-class PopularViewModel: ViewModel() {
+class TopRatedViewModel: ViewModel() {
     var response: LiveData<PagedList<Movie>> = MutableLiveData()
 
     init {
@@ -17,7 +17,7 @@ class PopularViewModel: ViewModel() {
             getResponse()
     }
     private fun getResponse() {
-        val moviesDataSourceFactory = MoviesDataSourceFactory(MoviesNetwork.retrofitService::getPopularMoviesAsync)
+        val moviesDataSourceFactory = MoviesDataSourceFactory(MoviesNetwork.retrofitService::getTopRatedMoviesAsync)
         val config = PagedList.Config.Builder()
             .setPageSize(20)
             .setEnablePlaceholders(false)

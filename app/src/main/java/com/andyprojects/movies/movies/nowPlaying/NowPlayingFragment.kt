@@ -1,4 +1,4 @@
-package com.andyprojects.movies.movies.page.nowPlaying
+package com.andyprojects.movies.movies.nowPlaying
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,7 +26,7 @@ class NowPlayingFragment: Fragment() {
                 container, false)
         binding.lifecycleOwner = this
 
-        recyclerView = binding.moviesRecyclerView
+        recyclerView = binding.includeRecyclerView.moviesRecyclerView
         recyclerView.adapter = MoviesAdapter()
         val adapter = recyclerView.adapter as MoviesAdapter
 

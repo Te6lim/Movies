@@ -21,16 +21,6 @@ fun ImageView.bindPoster(posterUrl: String?) {
 @BindingAdapter("movieTitle")
 fun TextView.bindTitle(title: String?) {
     title?.let {
-        if(title.length > 12)
-            this.text = truncateTitle(it)
-        else this.text = title
+        this.text = it
     }
-}
-
-fun truncateTitle(title: String): String {
-    val newTitle = StringBuffer()
-    for(c in 0..9)
-        newTitle.append(title[c])
-    newTitle.append("...")
-    return newTitle.toString()
 }

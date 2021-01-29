@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".movies.page.topRated.TopRatedFragment">
+    tools:context=".movies.topRated.TopRatedFragment">
 
-    <!--<data>
+    <data>
         <variable
             name="viewModel"
-            type="com.andyprojects.movies.movies.pagedFragments.topRated.TopRatedViewModel"/>
-    </data>-->
+            type="com.andyprojects.movies.movies.topRated.TopRatedViewModel"/>
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white_background">
+
+        <include
+            android:id="@+id/include_recyclerView"
+            layout="@layout/recycler_view"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
