@@ -18,6 +18,10 @@
             android:id="@+id/include_recyclerView"
             layout="@layout/recycler_view"/>
 
+        <include
+            android:id="@+id/include_error_screen"
+            layout="@layout/connection_error"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

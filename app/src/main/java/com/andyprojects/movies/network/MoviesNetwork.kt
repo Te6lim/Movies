@@ -10,6 +10,10 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+enum class MoviesNetworkStatus {
+    LOADING, ERROR, DONE;
+}
+
 const val BASE_URL = "https://api.themoviedb.org/3/"
 const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/"
 

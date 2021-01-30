@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentRatedTopBinding
 import com.andyprojects.movies.movies.MoviesAdapter
+import com.andyprojects.movies.network.MoviesNetworkStatus
 
 class TopRatedFragment: Fragment() {
 
@@ -27,6 +28,7 @@ class TopRatedFragment: Fragment() {
         binding.lifecycleOwner = this
 
         recyclerView = binding.includeRecyclerView.moviesRecyclerView
+        val errorScreen = binding.includeErrorScreen.connectionErrorScreen
         recyclerView.adapter = MoviesAdapter()
         val adapter = recyclerView.adapter as MoviesAdapter
 
@@ -34,9 +36,24 @@ class TopRatedFragment: Fragment() {
             .get(TopRatedViewModel::class.java)
         binding.viewModel = topRatedViewModel
 
-            topRatedViewModel.response.observe(viewLifecycleOwner, {
+        with(topRatedViewModel) {
+            response.observe(viewLifecycleOwner, {
                 adapter.submitList(it)
             })
+            status.observe(viewLifecycleOwner, {
+                when(it) {
+                    MoviesNetworkStatus.ERROR -> {
+                        recyclerView.visibility = View.GONE
+                        errorScreen.visibility = View.VISIBLE
+                    }
+                    MoviesNetworkStatus.DONE -> {
+                        errorScreen.visibility = View.GONE
+                        recyclerView.visibility = View.VISIBLE
+                    }
+                    else -> {}
+                }
+            })
+        }
 
         return binding.root
     }

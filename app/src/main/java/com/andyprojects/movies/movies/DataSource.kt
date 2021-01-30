@@ -1,17 +1,25 @@
 package com.andyprojects.movies.movies
 
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.andyprojects.movies.BuildConfig
+import com.andyprojects.movies.network.MoviesNetworkStatus
 import kotlinx.coroutines.*
 
-class MoviesDataSourceFactory(private val getMoviesAsync:(String, Int, String) -> Deferred<Movies>)
+class MoviesDataSourceFactory(
+    private val getMoviesAsync:(String, Int, String) -> Deferred<Movies>,
+    private val networkStatus: MutableLiveData<MoviesNetworkStatus>
+)
     : DataSource.Factory<Int, Movie>() {
     override fun create(): DataSource<Int, Movie> {
-        return MoviesDataSource(getMoviesAsync)
+        return MoviesDataSource(getMoviesAsync, networkStatus)
     }
 
-    class MoviesDataSource(private val getMoviesAsync:(String, Int, String) -> Deferred<Movies>)
+    class MoviesDataSource(
+        private val getMoviesAsync:(String, Int, String) -> Deferred<Movies>,
+        private val networkStatus: MutableLiveData<MoviesNetworkStatus>
+    )
         : PageKeyedDataSource<Int, Movie>() {
 
         companion object {
@@ -28,10 +36,12 @@ class MoviesDataSourceFactory(private val getMoviesAsync:(String, Int, String) -
             coroutineScope.launch {
                 val responseDeferred = getMoviesAsync("en", KEY, BuildConfig.API_KEY)
                 try {
+                    networkStatus.value = MoviesNetworkStatus.LOADING
                     val response = responseDeferred.await()
                     if(response.results != null)
                         callback.onResult(response.results, null, ++KEY)
-                } catch(t: Throwable) {}
+                    networkStatus.value = MoviesNetworkStatus.DONE
+                } catch(t: Throwable) { networkStatus.value = MoviesNetworkStatus.ERROR }
             }
         }
 
@@ -39,12 +49,14 @@ class MoviesDataSourceFactory(private val getMoviesAsync:(String, Int, String) -
             coroutineScope.launch {
                 val responseDiffered = getMoviesAsync("en", params.key, BuildConfig.API_KEY)
                 try {
+                    networkStatus.value = MoviesNetworkStatus.LOADING
                     val response = responseDiffered.await()
                     val key = if(params.key > 1) params.key - 1
                     else null
                     if(response.results != null)
                         callback.onResult(response.results, key)
-                } catch(t: Throwable) {}
+                    networkStatus.value = MoviesNetworkStatus.DONE
+                } catch(t: Throwable) { networkStatus.value = MoviesNetworkStatus.ERROR }
             }
         }
 
@@ -52,13 +64,15 @@ class MoviesDataSourceFactory(private val getMoviesAsync:(String, Int, String) -
             coroutineScope.launch {
                 val responseDeferred = getMoviesAsync("en", params.key, BuildConfig.API_KEY)
                 try {
+                    networkStatus.value = MoviesNetworkStatus.LOADING
                     val response = responseDeferred.await()
                     val totalPages = response.total_pages ?: 0
                     val key = if(params.key < totalPages) params.key + 1
                     else null
                     if(response.results != null)
                         callback.onResult(response.results, key)
-                } catch(t: Throwable) {}
+                    networkStatus.value = MoviesNetworkStatus.DONE
+                } catch(t: Throwable) { networkStatus.value = MoviesNetworkStatus.ERROR }
             }
         }
     }
