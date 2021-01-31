@@ -13,7 +13,7 @@ import com.andyprojects.movies.databinding.FragmentPopularBinding
 import com.andyprojects.movies.movies.MoviesAdapter
 import com.andyprojects.movies.network.MoviesNetworkStatus
 
-class PopularFragment(val popularViewModel: PopularViewModel) : Fragment() {
+class PopularFragment: Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 

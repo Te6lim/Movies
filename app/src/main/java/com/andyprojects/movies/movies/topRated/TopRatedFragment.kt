@@ -13,7 +13,7 @@ import com.andyprojects.movies.databinding.FragmentRatedTopBinding
 import com.andyprojects.movies.movies.MoviesAdapter
 import com.andyprojects.movies.network.MoviesNetworkStatus
 
-class TopRatedFragment(private val topRatedViewModel: TopRatedViewModel): Fragment() {
+class TopRatedFragment: Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 

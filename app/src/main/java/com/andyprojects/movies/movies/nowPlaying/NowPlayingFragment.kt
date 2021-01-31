@@ -13,7 +13,7 @@ import com.andyprojects.movies.databinding.FragmentPlayingNowBinding
 import com.andyprojects.movies.movies.MoviesAdapter
 import com.andyprojects.movies.network.MoviesNetworkStatus
 
-class NowPlayingFragment(private val nowPlayingViewModel: NowPlayingViewModel) : Fragment() {
+class NowPlayingFragment: Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
@@ -31,6 +31,9 @@ class NowPlayingFragment(private val nowPlayingViewModel: NowPlayingViewModel) :
         val errorScreen = binding.includeErrorScreen.connectionErrorScreen
         recyclerView.adapter = MoviesAdapter()
         val adapter = recyclerView.adapter as MoviesAdapter
+
+        val nowPlayingViewModel = ViewModelProvider(this)
+            .get(NowPlayingViewModel::class.java)
         binding.viewModel = nowPlayingViewModel
 
         with(nowPlayingViewModel) {
@@ -53,5 +56,9 @@ class NowPlayingFragment(private val nowPlayingViewModel: NowPlayingViewModel) :
         }
 
         return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

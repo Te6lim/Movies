@@ -1,4 +1,5 @@
 package com.andyprojects.movies.movies.nowPlaying
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -40,6 +40,7 @@ class MoviesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         fragmentAdapter = MoviesFragmentAdapter(this)
         moviesPager = binding.moviesPager
+        moviesPager.offscreenPageLimit = 5
         moviesPager.adapter = fragmentAdapter
         val tabLayout = binding.moviesTabLayout
         tabLayout.tabGravity = TabLayout.GRAVITY_FILL
@@ -61,21 +62,11 @@ class MoviesFragment: Fragment() {
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 ->
-                    NowPlayingFragment(ViewModelProvider(this@MoviesFragment)
-                        .get(NowPlayingViewModel::class.java))
-                1 ->
-                    PopularFragment(ViewModelProvider(this@MoviesFragment)
-                        .get(PopularViewModel::class.java))
-                2 ->
-                    TopRatedFragment(ViewModelProvider(this@MoviesFragment)
-                        .get(TopRatedViewModel::class.java))
-                3 -> {
-                    LatestFragment(null)
-                }
-                else ->
-                    UpComingFragment(ViewModelProvider(this@MoviesFragment)
-                        .get(UpComingViewModel::class.java))
+                0 -> NowPlayingFragment()
+                1 -> PopularFragment()
+                2 -> TopRatedFragment()
+                3 -> LatestFragment()
+                else -> UpComingFragment()
             }
         }
     }
