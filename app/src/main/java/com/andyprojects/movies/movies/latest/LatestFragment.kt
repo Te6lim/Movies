@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentLatestBinding
 
-class LatestFragment: Fragment() {
+class LatestFragment(private val latestViewModel: LatestViewModel?) : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

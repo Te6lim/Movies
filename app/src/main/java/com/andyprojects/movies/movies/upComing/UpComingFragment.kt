@@ -13,7 +13,7 @@ import com.andyprojects.movies.databinding.FragmentComingUpBinding
 import com.andyprojects.movies.movies.MoviesAdapter
 import com.andyprojects.movies.network.MoviesNetworkStatus
 
-class UpComingFragment: Fragment() {
+class UpComingFragment (private val upComingViewModel: UpComingViewModel) : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
@@ -32,8 +32,6 @@ class UpComingFragment: Fragment() {
         recyclerView.adapter = MoviesAdapter()
         val adapter = recyclerView.adapter as MoviesAdapter
 
-        val upComingViewModel = ViewModelProvider(this)
-            .get(UpComingViewModel::class.java)
         binding.viewModel = upComingViewModel
 
         with(upComingViewModel) {

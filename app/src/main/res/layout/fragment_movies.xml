@@ -13,10 +13,11 @@
             android:id="@+id/moviesTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabBackground="@drawable/tab_selector"
-            app:tabTextColor="@color/primaryTextColor"
-            app:tabSelectedTextColor="@color/primaryDarkColor"
-            app:tabIndicatorColor="@color/secondaryColor" />
+            android:textAlignment="center"
+            app:tabBackground="@color/primaryColor"
+            app:tabIndicatorColor="@color/secondaryColor"
+            app:tabSelectedTextColor="@color/secondaryLightColor"
+            app:tabTextColor="@color/primaryTextColor" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/moviesPager"

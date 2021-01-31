@@ -6,15 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentMoviesBinding
 import com.andyprojects.movies.movies.latest.LatestFragment
 import com.andyprojects.movies.movies.nowPlaying.NowPlayingFragment
+import com.andyprojects.movies.movies.nowPlaying.NowPlayingViewModel
 import com.andyprojects.movies.movies.popular.PopularFragment
+import com.andyprojects.movies.movies.popular.PopularViewModel
 import com.andyprojects.movies.movies.topRated.TopRatedFragment
+import com.andyprojects.movies.movies.topRated.TopRatedViewModel
 import com.andyprojects.movies.movies.upComing.UpComingFragment
+import com.andyprojects.movies.movies.upComing.UpComingViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -50,17 +55,27 @@ class MoviesFragment: Fragment() {
         }.attach()
     }
 
-    private class MoviesFragmentAdapter(fragment: Fragment)
+    private inner class MoviesFragmentAdapter(fragment: Fragment)
         : FragmentStateAdapter(fragment) {
         override fun getItemCount() = 5
 
         override fun createFragment(position: Int): Fragment {
-            return when(position) {
-                0 -> NowPlayingFragment()
-                1 -> PopularFragment()
-                2 -> TopRatedFragment()
-                3 -> LatestFragment()
-                else -> UpComingFragment()
+            return when (position) {
+                0 ->
+                    NowPlayingFragment(ViewModelProvider(this@MoviesFragment)
+                        .get(NowPlayingViewModel::class.java))
+                1 ->
+                    PopularFragment(ViewModelProvider(this@MoviesFragment)
+                        .get(PopularViewModel::class.java))
+                2 ->
+                    TopRatedFragment(ViewModelProvider(this@MoviesFragment)
+                        .get(TopRatedViewModel::class.java))
+                3 -> {
+                    LatestFragment(null)
+                }
+                else ->
+                    UpComingFragment(ViewModelProvider(this@MoviesFragment)
+                        .get(UpComingViewModel::class.java))
             }
         }
     }
