@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentMoviesBinding
 import com.andyprojects.movies.movies.MoviesAdapter
-import com.andyprojects.movies.network.MoviesNetworkStatus
+import com.andyprojects.movies.movies.PageDefault
 
-class PopularFragment: Fragment() {
+class PopularFragment: Fragment(), PageDefault {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var retryButton: Button
@@ -34,30 +34,17 @@ class PopularFragment: Fragment() {
 
         val errorScreen = binding.connectionErrorScreen
         recyclerView.adapter = MoviesAdapter()
-        val adapter = recyclerView.adapter as MoviesAdapter
 
         val popularViewModel = ViewModelProvider(this)
             .get(PopularViewModel::class.java)
         binding.viewModel = popularViewModel
 
-        with(popularViewModel) {
-            response.observe(viewLifecycleOwner, {
-                adapter.submitList(it)
-            })
-            status.observe(viewLifecycleOwner, {
-                when(it) {
-                    MoviesNetworkStatus.ERROR -> {
-                        recyclerView.visibility = View.GONE
-                        errorScreen.visibility = View.VISIBLE
-                    }
-                    MoviesNetworkStatus.DONE -> {
-                        errorScreen.visibility = View.GONE
-                        recyclerView.visibility = View.VISIBLE
-                    }
-                    else -> {}
-                }
-            })
-        }
+        setDefaults(
+            popularViewModel,
+            viewLifecycleOwner,
+            recyclerView,
+            errorScreen
+        )
 
         return binding.root
     }

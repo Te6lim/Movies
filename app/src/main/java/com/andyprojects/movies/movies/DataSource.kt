@@ -34,9 +34,9 @@ class MoviesDataSourceFactory(
             callback: LoadInitialCallback<Int, Movie>
         ) {
             coroutineScope.launch {
+                networkStatus.value = MoviesNetworkStatus.LOADING
                 val responseDeferred = getMoviesAsync("en", KEY, BuildConfig.API_KEY)
                 try {
-                    networkStatus.value = MoviesNetworkStatus.LOADING
                     val response = responseDeferred.await()
                     if(response.results != null)
                         callback.onResult(response.results, null, ++KEY)
@@ -47,9 +47,9 @@ class MoviesDataSourceFactory(
 
         override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
             coroutineScope.launch {
+                networkStatus.value = MoviesNetworkStatus.LOADING
                 val responseDiffered = getMoviesAsync("en", params.key, BuildConfig.API_KEY)
                 try {
-                    networkStatus.value = MoviesNetworkStatus.LOADING
                     val response = responseDiffered.await()
                     val key = if(params.key > 1) params.key - 1
                     else null
@@ -62,9 +62,9 @@ class MoviesDataSourceFactory(
 
         override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
             coroutineScope.launch {
+                networkStatus.value = MoviesNetworkStatus.LOADING
                 val responseDeferred = getMoviesAsync("en", params.key, BuildConfig.API_KEY)
                 try {
-                    networkStatus.value = MoviesNetworkStatus.LOADING
                     val response = responseDeferred.await()
                     val totalPages = response.total_pages ?: 0
                     val key = if(params.key < totalPages) params.key + 1
