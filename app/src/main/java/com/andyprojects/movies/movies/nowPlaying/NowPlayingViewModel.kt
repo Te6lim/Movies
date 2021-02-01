@@ -1,27 +1,22 @@
 package com.andyprojects.movies.movies.nowPlaying
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.andyprojects.movies.movies.Movie
 import com.andyprojects.movies.movies.MoviesDataSourceFactory
+import com.andyprojects.movies.movies.MoviesViewModel
 import com.andyprojects.movies.network.MoviesNetwork
 import com.andyprojects.movies.network.MoviesNetworkStatus
 
-class NowPlayingViewModel: ViewModel() {
+class NowPlayingViewModel: MoviesViewModel() {
 
-    var response: LiveData<PagedList<Movie>> = MutableLiveData()
     private val _status = MutableLiveData<MoviesNetworkStatus>()
-    val status: LiveData<MoviesNetworkStatus>
-    get() = _status
 
     init {
         if(response.value == null)
             getResponse()
     }
-    private fun getResponse() {
+    override fun getResponse() {
         val moviesDataSourceFactory =
             MoviesDataSourceFactory(MoviesNetwork.retrofitService::getNowPlayingMoviesAsync, _status)
         val config = PagedList.Config.Builder()

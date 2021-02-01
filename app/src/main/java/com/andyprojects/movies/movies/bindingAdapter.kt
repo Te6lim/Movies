@@ -1,5 +1,6 @@
 package com.andyprojects.movies.movies
 
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -22,5 +23,12 @@ fun ImageView.bindPoster(posterUrl: String?) {
 fun TextView.bindTitle(title: String?) {
     title?.let {
         this.text = it
+    }
+}
+
+@BindingAdapter("buttonClick")
+fun Button.bindClick(function: () -> Unit) {
+    this.setOnClickListener {
+        function()
     }
 }

@@ -1,26 +1,22 @@
 package com.andyprojects.movies.movies.topRated
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.andyprojects.movies.movies.Movie
 import com.andyprojects.movies.movies.MoviesDataSourceFactory
+import com.andyprojects.movies.movies.MoviesViewModel
 import com.andyprojects.movies.network.MoviesNetwork
 import com.andyprojects.movies.network.MoviesNetworkStatus
 
-class TopRatedViewModel: ViewModel() {
-    var response: LiveData<PagedList<Movie>> = MutableLiveData()
+class TopRatedViewModel: MoviesViewModel() {
+
     private val _status = MutableLiveData<MoviesNetworkStatus>()
-    val status: LiveData<MoviesNetworkStatus>
-        get() = _status
 
     init {
         if(response.value == null)
             getResponse()
     }
-    private fun getResponse() {
+    override fun getResponse() {
         val moviesDataSourceFactory =
             MoviesDataSourceFactory(MoviesNetwork.retrofitService::getTopRatedMoviesAsync, _status)
         val config = PagedList.Config.Builder()

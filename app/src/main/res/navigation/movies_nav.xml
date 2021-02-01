@@ -11,9 +11,9 @@
         tools:layout="@layout/fragent_shows_tv" />
     <fragment
         android:id="@+id/moviesFragment"
-        android:name="com.andyprojects.movies.movies.MoviesFragment"
+        android:name="com.andyprojects.movies.movies.MoviesContainer"
         android:label="@string/title_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/container_movies" />
 
     <fragment
         android:id="@+id/genresFragment"
