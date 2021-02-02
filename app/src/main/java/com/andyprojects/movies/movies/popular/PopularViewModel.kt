@@ -12,7 +12,7 @@ class PopularViewModel: MoviesViewModel() {
     }
     override fun getResponse() {
         val moviesDataSourceFactory =
-            MoviesDataSourceFactory(MoviesNetwork.retrofitService::getPopularMoviesAsync, stat)
+            MoviesDataSourceFactory(MoviesNetwork.retrofitService::getPopularMoviesAsync, stat, this::hasSomeLoaded.setter)
         val config = PagedList.Config.Builder()
             .setPageSize(20)
             .setEnablePlaceholders(false)

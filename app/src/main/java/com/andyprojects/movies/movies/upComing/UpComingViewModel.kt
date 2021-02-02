@@ -13,7 +13,7 @@ class UpComingViewModel: MoviesViewModel() {
 
     override fun getResponse() {
         val moviesDataSourceFactory =
-            MoviesDataSourceFactory(MoviesNetwork.retrofitService::getTopRatedMoviesAsync, stat)
+            MoviesDataSourceFactory(MoviesNetwork.retrofitService::getTopRatedMoviesAsync, stat, this::hasSomeLoaded.setter)
         val config = PagedList.Config.Builder()
             .setPageSize(20)
             .setEnablePlaceholders(false)

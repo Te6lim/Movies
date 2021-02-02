@@ -8,9 +8,12 @@ import com.andyprojects.movies.network.MoviesNetworkStatus
 
 abstract class MoviesViewModel: ViewModel() {
     var response: LiveData<PagedList<Movie>> = MutableLiveData()
+
     protected val stat = MutableLiveData<MoviesNetworkStatus>()
     val status: LiveData<MoviesNetworkStatus>
         get() = stat
+
+    var hasSomeLoaded: Boolean = false
 
     abstract fun getResponse()
 }

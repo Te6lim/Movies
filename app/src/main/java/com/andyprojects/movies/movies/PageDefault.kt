@@ -17,6 +17,16 @@ interface PageDefault {
         errorScreen: ConstraintLayout
     ) {
 
+        errorScreen.retryButton.setOnClickListener {
+            viewModel.getResponse()
+            observeVariables(
+                viewModel,
+                viewLifecycleOwner,
+                recyclerView,
+                errorScreen
+            )
+        }
+
         observeVariables(
             viewModel,
             viewLifecycleOwner,
@@ -37,29 +47,22 @@ interface PageDefault {
             status.observe(viewLifecycleOwner, {
                 when(it) {
                     MoviesNetworkStatus.ERROR -> {
-                        if(response.value.isNullOrEmpty()) {
+                        if(hasSomeLoaded == false) {
                             recyclerView.visibility = View.GONE
                             errorScreen.visibility = View.VISIBLE
-                            errorScreen.retryButton.setOnClickListener {
-                                observeVariables(
-                                    viewModel,
-                                    viewLifecycleOwner,
-                                    recyclerView,
-                                    errorScreen
-                                )
-                                viewModel.getResponse()
-                            }
                             Toast.makeText(
-                                recyclerView.context, "Network failed", Toast.LENGTH_SHORT
+                                errorScreen.context, "Network failed", Toast.LENGTH_SHORT
                             ).show()
                         } else {
                             Toast.makeText(
-                                recyclerView.context, "Network failed. Swipe down to refresh", Toast.LENGTH_SHORT
+                                errorScreen.context, "Network failed. Swipe down to refresh", Toast.LENGTH_SHORT
                             ).show()
                         }
                     }
 
                     MoviesNetworkStatus.LOADING -> {
+                        errorScreen.visibility = View.GONE
+                        recyclerView.visibility = View.VISIBLE
                     }
 
                     MoviesNetworkStatus.DONE -> {

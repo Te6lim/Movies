@@ -9,16 +9,18 @@ import kotlinx.coroutines.*
 
 class MoviesDataSourceFactory(
     private val getMoviesAsync:(String, Int, String) -> Deferred<Movies>,
-    private val networkStatus: MutableLiveData<MoviesNetworkStatus>
-)
-    : DataSource.Factory<Int, Movie>() {
+    private val networkStatus: MutableLiveData<MoviesNetworkStatus>,
+    private var hasSomeLoaded: (Boolean) -> Unit
+) : DataSource.Factory<Int, Movie>() {
+
     override fun create(): DataSource<Int, Movie> {
-        return MoviesDataSource(getMoviesAsync, networkStatus)
+        return MoviesDataSource(getMoviesAsync, networkStatus, hasSomeLoaded)
     }
 
     class MoviesDataSource(
         private val getMoviesAsync:(String, Int, String) -> Deferred<Movies>,
-        private val networkStatus: MutableLiveData<MoviesNetworkStatus>
+        private val networkStatus: MutableLiveData<MoviesNetworkStatus>,
+        private var hasSomeLoaded: (Boolean) -> Unit
     )
         : PageKeyedDataSource<Int, Movie>() {
 
@@ -41,6 +43,7 @@ class MoviesDataSourceFactory(
                     if(response.results != null)
                         callback.onResult(response.results, null, ++KEY)
                     networkStatus.value = MoviesNetworkStatus.DONE
+                    hasSomeLoaded(true)
                 } catch(t: Throwable) { networkStatus.value = MoviesNetworkStatus.ERROR }
             }
         }
