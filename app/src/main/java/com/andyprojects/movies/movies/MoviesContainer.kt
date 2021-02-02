@@ -1,9 +1,7 @@
 package com.andyprojects.movies.movies
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -17,6 +15,8 @@ import com.andyprojects.movies.movies.topRated.TopRatedFragment
 import com.andyprojects.movies.movies.upComing.UpComingFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MoviesContainer: Fragment() {
     private lateinit var moviesPager: ViewPager2
@@ -27,9 +27,21 @@ class MoviesContainer: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         binding = DataBindingUtil
             .inflate(inflater, R.layout.container_movies, container, false)
         return binding.root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.search_badge -> {
+                requireActivity().appToolbar.search_bar
+                    .visibility = View.VISIBLE
+                true
+            }
+            else -> return onOptionsItemSelected(item)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -13,7 +13,9 @@ class NowPlayingViewModel: MoviesViewModel() {
     }
     override fun getResponse() {
         val moviesDataSourceFactory =
-            MoviesDataSourceFactory(MoviesNetwork.retrofitService::getNowPlayingMoviesAsync, stat, this::hasSomeLoaded.setter)
+            MoviesDataSourceFactory(
+                MoviesNetwork.retrofitService::getNowPlayingMoviesAsync, stat, this::hasSomeLoaded.setter
+            )
         val config = PagedList.Config.Builder()
             .setPageSize(20)
             .setEnablePlaceholders(false)

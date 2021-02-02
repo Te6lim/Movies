@@ -21,7 +21,18 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/primaryColor"
                 android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"/>
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark">
+
+                <EditText
+                    android:id="@+id/search_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:hint="@string/search_text_hint"
+                    android:inputType="text"
+                    android:autofillHints="@string/search_text_hint" />
+
+            </androidx.appcompat.widget.Toolbar>
 
             <fragment
                 android:id="@+id/navHost"

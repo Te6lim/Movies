@@ -47,12 +47,12 @@ interface PageDefault {
             status.observe(viewLifecycleOwner, {
                 when(it) {
                     MoviesNetworkStatus.ERROR -> {
-                        if(hasSomeLoaded == false) {
+                        Toast.makeText(
+                            errorScreen.context, "Network failed", Toast.LENGTH_SHORT
+                        ).show()
+                        if(!hasSomeLoaded) {
                             recyclerView.visibility = View.GONE
                             errorScreen.visibility = View.VISIBLE
-                            Toast.makeText(
-                                errorScreen.context, "Network failed", Toast.LENGTH_SHORT
-                            ).show()
                         } else {
                             Toast.makeText(
                                 errorScreen.context, "Network failed. Swipe down to refresh", Toast.LENGTH_SHORT

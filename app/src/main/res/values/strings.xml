@@ -16,4 +16,5 @@
     <string name="movie_poster">movie poster</string>
     <string name="connection_error">Connection error!</string>
     <string name="retry">retry</string>
+    <string name="search_text_hint">Search</string>
 </resources>
