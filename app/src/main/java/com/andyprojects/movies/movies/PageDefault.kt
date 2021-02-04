@@ -16,30 +16,22 @@ interface PageDefault {
     ) {
         binding.viewModel = viewModel
         binding.moviesRecyclerView. adapter = MoviesAdapter()
+
+        refreshPage(binding, viewLifecycleOwner, viewModel)
+
+        binding.connectionErrorScreen.retryButton.setOnClickListener {
+            viewModel.getResponse()
+            observeVariables(viewModel, viewLifecycleOwner, binding)
+        }
+
+        observeVariables(viewModel, viewLifecycleOwner, binding)
+    }
+
+    private fun refreshPage(binding: FragmentMoviesBinding, viewLifecycleOwner: LifecycleOwner, viewModel: MoviesViewModel) {
         binding.swiperRefresh.setOnRefreshListener {
             viewModel.getResponse()
-            observeVariables(
-                viewModel,
-                viewLifecycleOwner,
-                binding
-            )
+            observeVariables(viewModel, viewLifecycleOwner, binding)
         }
-
-        binding.connectionErrorScreen.retryButton
-            .setOnClickListener {
-            viewModel.getResponse()
-            observeVariables(
-                viewModel,
-                viewLifecycleOwner,
-                binding
-            )
-        }
-
-        observeVariables(
-            viewModel,
-            viewLifecycleOwner,
-            binding
-        )
     }
 
     private fun observeVariables(

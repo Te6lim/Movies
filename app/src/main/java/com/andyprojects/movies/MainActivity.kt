@@ -63,6 +63,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
             }
+
+            R.id.settingsFragment -> {
+                NavigationUI.onNavDestinationSelected(item, this.findNavController(R.id.navHost))
+            }
+
             else -> return super.onOptionsItemSelected(item)
         }
     }

@@ -25,13 +25,8 @@ class PopularFragment: Fragment(), PageDefault {
 
         val popularViewModel = ViewModelProvider(this)
             .get(PopularViewModel::class.java)
-        binding.viewModel = popularViewModel
 
-        setDefaults(
-            popularViewModel,
-            viewLifecycleOwner,
-            binding,
-        )
+        setDefaults(popularViewModel, viewLifecycleOwner, binding)
 
         return binding.root
     }

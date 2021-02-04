@@ -26,11 +26,7 @@ class TopRatedFragment: Fragment(), PageDefault {
         val topRatedViewModel = ViewModelProvider(this)
             .get(TopRatedViewModel::class.java)
 
-        setDefaults(
-            topRatedViewModel,
-            viewLifecycleOwner,
-            binding
-        )
+        setDefaults(topRatedViewModel, viewLifecycleOwner, binding)
 
         return binding.root
     }

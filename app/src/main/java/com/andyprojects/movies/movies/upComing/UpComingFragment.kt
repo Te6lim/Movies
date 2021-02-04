@@ -22,14 +22,11 @@ class UpComingFragment: Fragment(), PageDefault {
             DataBindingUtil.inflate(inflater, R.layout.fragment_movies,
                 container, false)
         binding.lifecycleOwner = this
+
         val upComingViewModel = ViewModelProvider(this)
             .get(UpComingViewModel::class.java)
 
-        setDefaults(
-            upComingViewModel,
-            viewLifecycleOwner,
-            binding
-        )
+        setDefaults(upComingViewModel, viewLifecycleOwner, binding)
 
         return binding.root
     }

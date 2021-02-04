@@ -18,19 +18,14 @@ class NowPlayingFragment: Fragment(), PageDefault {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentMoviesBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_movies,
-                container, false)
+        val binding: FragmentMoviesBinding = DataBindingUtil
+            .inflate(inflater, R.layout.fragment_movies, container, false)
         binding.lifecycleOwner = this
 
         val nowPlayingViewModel = ViewModelProvider(this)
             .get(NowPlayingViewModel::class.java)
 
-        setDefaults(
-            nowPlayingViewModel,
-            viewLifecycleOwner,
-            binding,
-        )
+        setDefaults(nowPlayingViewModel, viewLifecycleOwner, binding)
 
         return binding.root
     }
