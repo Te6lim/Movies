@@ -2,7 +2,6 @@ package com.andyprojects.movies.movies
 
 import android.os.Bundle
 import android.view.*
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -16,44 +15,20 @@ import com.andyprojects.movies.movies.topRated.TopRatedFragment
 import com.andyprojects.movies.movies.upComing.UpComingFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MoviesContainer: Fragment() {
     private lateinit var moviesPager: ViewPager2
     private lateinit var fragmentAdapter: MoviesFragmentAdapter
     private lateinit var binding: ContainerMoviesBinding
 
-    private var searchBarIsVisible = false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setHasOptionsMenu(true)
         binding = DataBindingUtil
             .inflate(inflater, R.layout.container_movies, container, false)
         return binding.root
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val searchBar = requireActivity().appToolbar.search_bar
-        return when(item.itemId) {
-            R.id.search_option -> {
-                if(searchBarIsVisible) {
-                    searchBarIsVisible = false
-                    item.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_search)
-                    searchBar.visibility = View.GONE
-                    return true
-                } else {
-                    searchBarIsVisible = true
-                    item.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_close)
-                    searchBar.visibility = View.VISIBLE
-                    true
-                }
-            }
-            else -> return onOptionsItemSelected(item)
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

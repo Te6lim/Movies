@@ -22,6 +22,7 @@
             android:id="@+id/movie_poster"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:scaleType="fitCenter"
             android:contentDescription="@string/movie_poster"
             app:layout_constraintBottom_toTopOf="@+id/movie_title"
             app:layout_constraintEnd_toEndOf="parent"
