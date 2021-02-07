@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".screens.movies.latest.LatestFragment">
-
-    <!--<data>
-        <variable
-            name="viewModel"
-            type="com.andyprojects.movies.screens.movies.latest.LatestViewModel"/>
-    </data>-->
+    tools:context=".screens.tvShows.TvShowsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tvShowsFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white_background">
+        android:layout_height="match_parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

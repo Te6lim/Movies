@@ -34,14 +34,10 @@
 
             </androidx.appcompat.widget.Toolbar>
 
-            <fragment
-                android:id="@+id/navHost"
+            <FrameLayout
+                android:id="@+id/container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                app:navGraph="@navigation/movies_nav"
-                app:defaultNavHost="true"
-                tools:ignore="FragmentTagUsage" />
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 

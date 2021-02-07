@@ -4,27 +4,27 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/moviesFragment"
+            android:id="@+id/movies"
             android:icon="@drawable/ic_nav_movies"
             android:title="@string/title_movies"/>
 
         <item
-            android:id="@+id/tvShowsFragment"
+            android:id="@+id/tvShows"
             android:icon="@drawable/ic_nav_tv_show"
             android:title="@string/title_tv_shows"/>
 
         <item
-            android:id="@+id/genresFragment"
+            android:id="@+id/genres"
             android:icon="@drawable/ic_nav_genre"
             android:title="@string/title_genres"/>
 
         <item
-            android:id="@+id/discoverFragment"
+            android:id="@+id/discover"
             android:icon="@drawable/ic_nav_discover"
             android:title="@string/title_discover"/>
 
         <item
-            android:id="@+id/settingsFragment"
+            android:id="@+id/settings"
             android:icon="@drawable/ic_nav_settings"
             android:title="@string/title_settings"/>
 

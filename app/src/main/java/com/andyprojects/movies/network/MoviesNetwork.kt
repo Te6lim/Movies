@@ -1,6 +1,6 @@
 package com.andyprojects.movies.network
 
-import com.andyprojects.movies.movies.Movies
+import com.andyprojects.movies.screens.movies.Movies
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

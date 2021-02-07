@@ -9,9 +9,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.andyprojects.movies.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,18 +26,13 @@ class MainActivity : AppCompatActivity() {
             .setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
 
+        navDrawer = binding.drawerLayout
+
         appToolbar = binding.appToolbar
         setSupportActionBar(appToolbar)
 
-        val navController = this.findNavController(R.id.navHost)
-        navDrawer = binding.drawerLayout
-        NavigationUI.setupActionBarWithNavController(this, navController, navDrawer)
-        NavigationUI.setupWithNavController(binding.navView, navController)
-    }
+        val navView: NavigationView = binding.navView
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = this.findNavController(R.id.navHost)
-        return NavigationUI.navigateUp(navController, navDrawer)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -62,10 +56,6 @@ class MainActivity : AppCompatActivity() {
                     searchBar.visibility = View.VISIBLE
                     true
                 }
-            }
-
-            R.id.settingsFragment -> {
-                NavigationUI.onNavDestinationSelected(item, this.findNavController(R.id.navHost))
             }
 
             else -> return super.onOptionsItemSelected(item)
