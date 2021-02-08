@@ -10,6 +10,7 @@ import com.andyprojects.movies.R
 import com.andyprojects.movies.databinding.FragmentDiscoverBinding
 
 class DiscoverFragment: Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -17,6 +17,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MoviesFragment: Fragment() {
+
     private lateinit var moviesPager: ViewPager2
     private lateinit var fragmentAdapter: MoviesFragmentAdapter
     private lateinit var binding: FragmentMoviesBinding
@@ -34,8 +35,11 @@ class MoviesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         fragmentAdapter = MoviesFragmentAdapter(this)
         moviesPager = binding.moviesPager
-        moviesPager.offscreenPageLimit = 5
-        moviesPager.adapter = fragmentAdapter
+        with(moviesPager) {
+            offscreenPageLimit = 5
+            adapter = fragmentAdapter
+            isSaveEnabled = true
+        }
         val tabLayout = binding.moviesTabLayout
         tabLayout.tabGravity = TabLayout.GRAVITY_FILL
         TabLayoutMediator(tabLayout, moviesPager) { tab, position ->
