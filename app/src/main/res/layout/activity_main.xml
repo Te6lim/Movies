@@ -10,6 +10,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -34,10 +35,14 @@
 
             </androidx.appcompat.widget.Toolbar>
 
-            <FrameLayout
+            <fragment
                 android:id="@+id/home_fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/movies_navigation"
+                tools:ignore="FragmentTagUsage" />
 
         </LinearLayout>
 
